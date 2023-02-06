@@ -1,86 +1,111 @@
 #include <bits/stdc++.h>
+#include <iomanip>
 using namespace std;
 
-struct sv {
-	string ma, ten, lop, ns;
+struct Student {
+	string id, name, className, birthday;
 	double gpa;
 
-	void in() {
-		cout << ".....................\n";
-		cout << "Ma sinh vien :" << ma << endl;
-		cout << "Ten sinh vien :" << ten << endl;
-		cout << "Lop :" << lop << endl;
-		cout << "Ngay sinh :" << ns << endl;
-		cout << "GPA :" << fixed << setprecision(2) << gpa << endl;
-		cout << ".....................\n";
+	void detail() {
+		cout << "| " 
+			<< setfill(' ') << left << setw(4) << id << " | " 
+			<< setfill(' ') << left << setw(20) << name << " | " 
+			<< setfill(' ') << left << setw(20) << className << " | " 
+			<< setfill(' ') << left << setw(20) << birthday << " | " 
+			<< setfill(' ') << left << setw(5) << fixed << setprecision(2) << gpa << " |" 
+			<< endl;
+
+		cout << "|" 
+			<< setfill('-') << left << setw(6) << "" << "|" 
+			<< setfill('-') << left << setw(22) << "" << "|" 
+			<< setfill('-') << left << setw(22) << "" << "|" 
+			<< setfill('-') << left << setw(22) << "" << "|" 
+			<< setfill('-') << left << setw(7) << "" << "|" 
+			<< endl;
 	}
 
-	void nhap() {
-		cout << "Nhap ma sinh vien :";
-		cin >> ma;
-		cout << "Nhap ten sinh vien :";
+	void input() {
+		cout << "Nhap ma sinh vien: ";
+		cin >> id;
+		cout << "Nhap ten sinh vien: ";
 		cin.ignore();
-		getline(cin, ten);
-		cout << "Nhap lop:"; cin >> lop;
-		cout << "Nhap ngay sinh :";
-		cin >> ns;
-		cout << "Gpa :";
+		getline(cin, name);
+		cout << "Nhap lop: "; cin >> className;
+		cout << "Nhap ngay sinh: ";
+		cin >> birthday;
+		cout << "GPA: ";
 		cin >> gpa;
 	}
 };
 
-void inds(sv a[], int n) {
-	cout << " thong tin danh sach sinh vien:\n";
+void listHeader() {
+	cout << "|" 
+			<< setfill('-') << left << setw(6) << "" << "|" 
+			<< setfill('-') << left << setw(22) << "" << "|" 
+			<< setfill('-') << left << setw(22) << "" << "|" 
+			<< setfill('-') << left << setw(22) << "" << "|" 
+			<< setfill('-') << left << setw(7) << "" << "|" 
+			<< endl;
+		
+	cout << "| " 
+		<< setfill(' ') << left << setw(4) << "ID" << " | " 
+		<< setfill(' ') << left << setw(20) << "Name" << " | " 
+		<< setfill(' ') << left << setw(20) << "ClassName" << " | " 
+		<< setfill(' ') << left << setw(20) << "Birthday" << " | " 
+		<< setfill(' ') << left << setw(5) << "GPA" << " |" 
+		<< endl;
+		
+	cout << "|" 
+			<< setfill('-') << left << setw(6) << "" << "|" 
+			<< setfill('-') << left << setw(22) << "" << "|" 
+			<< setfill('-') << left << setw(22) << "" << "|" 
+			<< setfill('-') << left << setw(22) << "" << "|" 
+			<< setfill('-') << left << setw(7) << "" << "|" 
+			<< endl;
+}
+
+void listStudent(Student a[], int n) {
+	cout << "Thong tin danh sach sinh vien:\n";
+	listHeader();
+
 	for(int i = 0; i < n; i++) {
-		a[i].in();
+		a[i].detail();
 	}
 }
 
-void tkma( sv a[], int n) {
-	string ma;
-	cout << "Nhap ma sinh vien can tim :";
-	cin >> ma;
-	bool found = false;
+void searchId(Student a[], int n) {
+	string id;
+	cout << "Nhap ma sinh vien can tim: ";
+	cin >> id;
+
+	listHeader();
 	for (int i = 0; i < n; i++) {
-		if(a[i].ma.find(ma) !=string::npos) {
-			a[i].in();
-			found = true;
+		if(a[i].id.find(id) != string::npos) {
+			a[i].detail();
+			return;
 		}
 	}
-	if(!found)
-		cout << "Khong tim thay sinh vien co ma vua nhap !\n";
+	
+	cout << "Khong tim thay sinh vien co ma vua nhap !\n";
 }
 
-void lkgpa(sv a[], int n) {
+void listGPA(Student a[], int n) {
+	// tim diem GPA cao nhat
 	double res = 0;
 	for(int i = 0; i < n; i++) {
 		if(a[i].gpa > res) res = a[i].gpa;
 	}
+	
+	listHeader();
 	cout << "Danh sach sinh vien co diem gpa cao nhat :\n";
-	for(int i = 0; i <n; i++) {
-		if(res == a[i].gpa) {
-			a[i].in();
-		}
+	for(int i = 0; i < n; i++) {
+		if(a[i].gpa == res) {
+			a[i].detail();
+		};
 	}
 }
 
-bool cmp1(sv a, sv b) {
-	return a.gpa > b.gpa;
-}
-
-void lkgpa2(sv a[], int n) {
-	vector<sv> v;
-	for(int i = 0; i< n; i++) {
-		if(a[i].gpa >= 2.5) v.push_back(a[i]);
-	}
-	sort(v.begin(), v.end(), cmp1);
-	cout << "Danh sach sinh vien co diem gpa >= 2.5:\n";
-	for(sv x : v) {
-		x.in();
-	}
-}
-
-string chuanhoa(string name){
+string chuanhoa(string name) {
 	stringstream ss(name); 
 	vector<string> v;
 	string token, res = "";
@@ -92,38 +117,28 @@ string chuanhoa(string name){
 	return res;
 }
 
-bool cmp2(sv a, sv b) {
-   string ten1 = chuanhoa(a.ten);
-   string ten2 = chuanhoa(b.ten);
-   return ten1 < ten2;
+bool cmp3(Student a, Student b){
+	if(a.className != b.className) return a.className < b.className;
+	string name1 = chuanhoa(a.name);
+   	string name2 = chuanhoa(b.name);
+   return name1 < name2;
 }
 
-bool cmp3(sv a, sv b){
-	if(a.lop != b.lop) return a.lop < b.lop;
-	string ten1 = chuanhoa(a.ten);
-   string ten2 = chuanhoa(b.ten);
-   return ten1 < ten2;
-}
-
-bool cmp4(sv a, sv b){
-	if(a.lop != b.lop) return a.lop < b.lop;
+bool cmp4(Student a, Student b){
+	if(a.className != b.className) return a.className < b.className;
 	return a.gpa > b.gpa;
 }
 
-void sxten(sv a[], int n) {
-	sort(a, a + n, cmp2);
-}
-
-void sxlop(sv a[], int n){
+void sortName(Student a[], int n) {
 	sort(a, a + n, cmp3);
 }
 
-void sxlop2(sv a[], int n){
+void sortClassName(Student a[], int n){
 	sort(a, a + n, cmp4);
 }
 
 int main() {
-	sv a[1000];
+	Student a[1000];
 	int n;
 
 	while(true) {
@@ -131,43 +146,35 @@ int main() {
 		cout << "1. Nhap thong tin sinh vien\n";
 		cout << "2. Hien thi toan bo danh sach sinh vien\n";
 		cout << "3. Tim kiem sinh vien theo ma\n";
-		cout << "4. Liet ke sinh vien co diem gpa cao nhat\n";
-		cout << "5. Liet ke cac sinh vien co diem gpa >= 2.5\n";
-		cout << "6. Sap xep sinh vien theo ten\n";
-		cout << "7. Sap xep sinh vien theo lop, cac ban cung lop sap xep ten theo thu tu abc\n";
-		cout << "8. Sap xep sinh vien theo lop, cac ban cung lop duoc sap xep theo diem gpa giam dan\n";
+		cout << "4. Liet ke sinh vien co diem GPA cao nhat\n";
+		cout << "5. Sap xep sinh vien theo lop va ten theo ABC\n";
+		cout << "6. Sap xep sinh vien theo lop va diem GPA giam dan\n";
 		cout << "0. Thoat !\n";
 		cout << "-------------------------------\n";
-		cout << "Nhap lua chon : \n";
+		cout << "Nhap lua chon: \n";
 		int lc;
 		cin >> lc;
 	
 		switch(lc) {
 			case 1:
-				a[n].nhap();
+				a[n].input();
 				++n;
 				break;
 			case 2:	
-			    inds(a, n);
+			    listStudent(a, n);
 			    break;
 			case 3:
-			    tkma(a ,n);
+			    searchId(a ,n);
 			    break;
 			case 4:
-			    lkgpa(a, n);
+			    listGPA(a, n);
 				break;
 			case 5:
-			    lkgpa2(a, n);
+			    sortName(a, n);
 				break;
 			case 6:
-			    sxten(a ,n);
+			    sortClassName(a ,n);
 			    break;
-			case 7:
-			    sxlop(a, n);
-				break;
-			case 8: 
-			    sxlop2(a, n);
-				break;
 			case 0:
 			    cout << "Thoat!!!\n";
 				return 0;
