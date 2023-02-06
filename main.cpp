@@ -132,61 +132,46 @@ int main() {
 		cout << "5. Liet ke cac sinh vien co diem gpa >= 2.5\n";
 		cout << "6. Sap xep sinh vien theo ten\n";
 		cout << "7. Sap xep sinh vien theo lop, cac ban cung lop sap xep ten theo thu tu abc\n";
-		cout << "8. sap xem sinh vien theo lop, cac ban cung lop duoc sap xep theo diem gpa giam dan\n";
+		cout << "8. sap xep sinh vien theo lop, cac ban cung lop duoc sap xep theo diem gpa giam dan\n";
 		cout << "0. Thoat !\n";
 		cout << "-------------------------------\n";
 		cout << "Nhap lua chon : \n";
 		int lc;
 		cin >> lc;
-		// if(lc == 1) {
-		// 	a[n].nhap();
-		// 	++n;
-		// } else if(lc == 2) {
-		// 	inds(a, n);
-		// } else if(lc == 3) {
-		// 	tkma(a ,n);
-		// } else if(lc == 4) {
-		// 	lkgpa(a, n);
-		// } else if(lc == 5) {
-		// 	lkgpa2(a, n);
-		// } else if(lc == 6) {
-		// 	sxten(a ,n);
-		// } else if(lc == 7) {
-		// 	sxlop(a, n);
-		// } else if(lc == 8) {
-		// 	sxlop2(a, n);
-		// } else if(lc == 0) {
-		// 	break;
-		// }
-
+	
 		switch(lc) {
 			case 1:
 				a[n].nhap();
 				++n;
 				break;
-			case 2:
+			case 2:	
 			    inds(a, n);
-				break;
-			case 3: 
+			    break;
+			case 3:
 			    tkma(a ,n);
-				break;
-			case 4: 
+			    break;
+			case 4:
 			    lkgpa(a, n);
 				break;
-			case 5: 
+			case 5:
 			    lkgpa2(a, n);
 				break;
-			case 6: 
+			case 6:
 			    sxten(a ,n);
-				break;
-			case 7:  
+			    break;
+			case 7:
 			    sxlop(a, n);
 				break;
 			case 8: 
 			    sxlop2(a, n);
 				break;
-			case 0: break;
+			case 0:
+			    cout << "Thoat!!!\n";
+		        exit(1);
+		        break;
+			default:
+			    cout << "Khong hop le !" << endl;   
 		}
 	}
-	return 0;
+ return 0;
 }
