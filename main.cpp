@@ -138,25 +138,54 @@ int main() {
 		cout << "Nhap lua chon : \n";
 		int lc;
 		cin >> lc;
-		if(lc == 1) {
-			a[n].nhap();
-			++n;
-		} else if(lc == 2) {
-			inds(a, n);
-		} else if(lc == 3) {
-			tkma(a ,n);
-		} else if(lc == 4) {
-			lkgpa(a, n);
-		} else if(lc == 5) {
-			lkgpa2(a, n);
-		} else if(lc == 6) {
-			sxten(a ,n);
-		} else if(lc == 7) {
-			sxlop(a, n);
-		} else if(lc == 8) {
-			sxlop2(a, n);
-		} else if(lc == 0) {
-			break;
+		// if(lc == 1) {
+		// 	a[n].nhap();
+		// 	++n;
+		// } else if(lc == 2) {
+		// 	inds(a, n);
+		// } else if(lc == 3) {
+		// 	tkma(a ,n);
+		// } else if(lc == 4) {
+		// 	lkgpa(a, n);
+		// } else if(lc == 5) {
+		// 	lkgpa2(a, n);
+		// } else if(lc == 6) {
+		// 	sxten(a ,n);
+		// } else if(lc == 7) {
+		// 	sxlop(a, n);
+		// } else if(lc == 8) {
+		// 	sxlop2(a, n);
+		// } else if(lc == 0) {
+		// 	break;
+		// }
+
+		switch(lc) {
+			case 1:
+				a[n].nhap();
+				++n;
+				break;
+			case 2:
+			    inds(a, n);
+				break;
+			case 3: 
+			    tkma(a ,n);
+				break;
+			case 4: 
+			    lkgpa(a, n);
+				break;
+			case 5: 
+			    lkgpa2(a, n);
+				break;
+			case 6: 
+			    sxten(a ,n);
+				break;
+			case 7:  
+			    sxlop(a, n);
+				break;
+			case 8: 
+			    sxlop2(a, n);
+				break;
+			case 0: break;
 		}
 	}
 	return 0;
