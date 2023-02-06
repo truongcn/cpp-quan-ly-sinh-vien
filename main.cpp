@@ -67,6 +67,7 @@ void lkgpa(sv a[], int n) {
 bool cmp1(sv a, sv b) {
 	return a.gpa > b.gpa;
 }
+
 void lkgpa2(sv a[], int n) {
 	vector<sv> v;
 	for(int i = 0; i< n; i++) {
@@ -90,6 +91,7 @@ string chuanhoa(string name){
 	for(int i = 0; i < v.size() -1; i++) res += v[i];
 	return res;
 }
+
 bool cmp2(sv a, sv b) {
    string ten1 = chuanhoa(a.ten);
    string ten2 = chuanhoa(b.ten);
@@ -123,16 +125,17 @@ void sxlop2(sv a[], int n){
 int main() {
 	sv a[1000];
 	int n;
-	while(1) {
+
+	while(true) {
 		cout << "-------------MENU-----------\n";
 		cout << "1. Nhap thong tin sinh vien\n";
 		cout << "2. Hien thi toan bo danh sach sinh vien\n";
-		cout << "3. tim kiem sinh vien theo ma\n";
+		cout << "3. Tim kiem sinh vien theo ma\n";
 		cout << "4. Liet ke sinh vien co diem gpa cao nhat\n";
 		cout << "5. Liet ke cac sinh vien co diem gpa >= 2.5\n";
 		cout << "6. Sap xep sinh vien theo ten\n";
 		cout << "7. Sap xep sinh vien theo lop, cac ban cung lop sap xep ten theo thu tu abc\n";
-		cout << "8. sap xep sinh vien theo lop, cac ban cung lop duoc sap xep theo diem gpa giam dan\n";
+		cout << "8. Sap xep sinh vien theo lop, cac ban cung lop duoc sap xep theo diem gpa giam dan\n";
 		cout << "0. Thoat !\n";
 		cout << "-------------------------------\n";
 		cout << "Nhap lua chon : \n";
@@ -167,8 +170,7 @@ int main() {
 				break;
 			case 0:
 			    cout << "Thoat!!!\n";
-		        exit(1);
-		        break;
+				return 0;
 			default:
 			    cout << "Khong hop le !" << endl;   
 		}
