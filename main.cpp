@@ -96,8 +96,8 @@ void listGPA(Student a[], int n) {
 		if(a[i].gpa > res) res = a[i].gpa;
 	}
 	
-	listHeader();
 	cout << "Danh sach sinh vien co diem gpa cao nhat :\n";
+	listHeader();
 	for(int i = 0; i < n; i++) {
 		if(a[i].gpa == res) {
 			a[i].detail();
@@ -151,7 +151,7 @@ int main() {
 		cout << "6. Sap xep sinh vien theo lop va diem GPA giam dan\n";
 		cout << "0. Thoat !\n";
 		cout << "-------------------------------\n";
-		cout << "Nhap lua chon: \n";
+		cout << "Nhap lua chon:  ";
 		int lc;
 		cin >> lc;
 	
@@ -171,9 +171,11 @@ int main() {
 				break;
 			case 5:
 			    sortName(a, n);
+			    listStudent(a, n);
 				break;
 			case 6:
 			    sortClassName(a ,n);
+			    listStudent(a, n);
 			    break;
 			case 0:
 			    cout << "Thoat!!!\n";
