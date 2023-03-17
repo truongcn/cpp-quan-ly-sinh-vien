@@ -174,7 +174,7 @@ void delStudent(Student a[], int n)
 	else n--;
 }
 
-void UpdateStudent(Student a[], int n)
+void updateStudent(Student a[], int n)
 {
 	string soct;
 	cout << "Nhap ma so sinh vien ban can sua: ";cin >> soct;
@@ -186,51 +186,7 @@ void UpdateStudent(Student a[], int n)
 		}
 	}
 }
-//{
-//	int chon,i,ap;
-//	do
-//	{
-//		cout << "\n1. Sua ma sinh vien: "
-//		     << "\n2. Sua ten sinh vien: "
-//		     << "\n3. Sua lop: "
-//	         << "\n4. Sua ngay sinh: "
-//	         << "\n5. Sua gioi tinh: "
-//		     << "\n6. Sua GPA: "
-//		     << "\n <> Chon muc can chinh sua <>: ";
-//		cin >> chon;   
-//		switch(chon)  
-//		{
-//			case 1:
-//				cin.ignore();
-//				cout << "Nhap ma sinh vien moi: ";
-//				cin.getline(ap.id)
-//				break;
-//			case 2:
-//                cin.ignore();		
-//				cout << "Nhap ten sinh vien moi: ";		
-//				getline(cin, a[i].name);
-//				break;
-//			case 3:
-//			    cout << "Nhap lop moi: ";
-//				cin >> a[i].className;
-//				break;
-//			case 4:
-//			    cout << "Nhap ngay sinh moi: ";
-//				cin >> a[i].birthday;
-//				break;
-//			case 5:
-//			    cout << "Nhap gioi tinh moi: ";
-//				cin >> a[i].gt;
-//				break;
-//			case 6:
-//			    cout << "Nhap GPA moi: ";
-//				cin >> a[i].gpa;
-//				break;
-//			default:
-//			    cout << "Hoan tat viec chinh sua !\n";					
-//		}
-//	}while(chon >=1 && chon <= 6);
-//}
+
 
 int main() {
 	Student a[1000];
@@ -284,7 +240,8 @@ int main() {
             	listStudent(a, n);
 			    break;
 			case 8:
-			    UpdateStudent;   
+			    updateStudent(a, n);  
+				listStudent(a, n); 
 				break;
 			case 0:
 			    cout << "Thoat!!!\n";
