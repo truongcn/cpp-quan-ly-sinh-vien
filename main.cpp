@@ -152,7 +152,7 @@ void sortClassName(Student a[], int n)
 	sort(a, a + n, cmp4);
 }
 
-void delStudent(Student a[], int n)
+void delStudent(Student a[], int &n)
 {
 	string soct;
 	int res = 0;
@@ -166,11 +166,11 @@ void delStudent(Student a[], int n)
 		   {
 		   	 a[j] = a[j+1];
 		   }
-		   cout << "Da xoa sinh vien co ma " << soct << "\n";
+		   cout << "\n * Da xoa sinh vien co ma " << soct << " ! * \n\n";
 		}
 	}
 	if (res == 0)
-	cout << "Ma so sinh vien khong ton tai ! \n";
+	cout << "\n * Ma so sinh vien khong ton tai ! * \n\n";
 	else n--;
 }
 
@@ -183,6 +183,7 @@ void updateStudent(Student a[], int n)
 		if(a[i].id == soct)
 		{
 			a[i].input();
+			cout << "Da sua sinh vien co ma " << soct << " thanh cong !\n";
 		}
 	}
 }
@@ -236,12 +237,12 @@ int main() {
 			    listStudent(a, n);
 			    break;
 			case 7:
-				delStudent(a, n);
-				listStudent(a, n);
+                delStudent(a, n);
+                listStudent(a, n);
 				break;
 			case 8:
-			    updateStudent(a, n);  
-				listStudent(a, n); 
+                updateStudent(a, n);  
+                listStudent(a, n); 
 				break;
 			case 0:
 			    cout << "Thoat!!!\n";
