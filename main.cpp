@@ -235,10 +235,10 @@ int main() {
 			    sortClassName(a ,n);
 			    listStudent(a, n);
 			    break;
-            case 7:
-            	delStudent(a, n);
-            	listStudent(a, n);
-			    break;
+			case 7:
+				delStudent(a, n);
+				listStudent(a, n);
+				break;
 			case 8:
 			    updateStudent(a, n);  
 				listStudent(a, n); 
