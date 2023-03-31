@@ -76,10 +76,11 @@ void listHeader()
 
 void listStudent(Student a[], int n) 
 {
-	cout << "Thong tin danh sach sinh vien:\n";
+	cout << "Thong tin danh sach sinh vien:\n\n";
 	listHeader();
 
-	for(int i = 0; i < n; i++) {
+	for(int i = 0; i < n; i++) 
+	{
 		a[i].detail();
 	}
 }
@@ -90,8 +91,10 @@ void searchId(Student a[], int n)
 	cout << "Nhap ma sinh vien can tim: ";cin >> id;
 
 	listHeader();
-	for (int i = 0; i < n; i++) {
-		if(a[i].id.find(id) != string::npos) {
+	for (int i = 0; i < n; i++) 
+	{
+		if(a[i].id.find(id) != string::npos) 
+		{
 			a[i].detail();
 			return;
 		}
@@ -103,13 +106,16 @@ void listGPA(Student a[], int n)
 {
 	// tim diem GPA cao nhat
 	double res = 0;
-	for(int i = 0; i < n; i++) {
+	for(int i = 0; i < n; i++) 
+	{
 		if(a[i].gpa > res) res = a[i].gpa;
 	}
 	cout << "Danh sach sinh vien co diem gpa cao nhat :\n";
 	listHeader();
-	for(int i = 0; i < n; i++) {
-		if(a[i].gpa == res) {
+	for(int i = 0; i < n; i++) 
+	{
+		if(a[i].gpa == res) 
+		{
 			a[i].detail();
 		};
 	}
@@ -120,7 +126,8 @@ string chuanhoa(string name)
 	stringstream ss(name); 
 	vector<string> v;
 	string token, res = "";
-	while(ss >> token) {
+	while(ss >> token) 
+	{
 		v.push_back(token);
 	}
 	res += v[v.size() - 1];
@@ -177,15 +184,23 @@ void delStudent(Student a[], int &n)
 void updateStudent(Student a[], int n)
 {
 	string soct;
+	int res = 0;
 	cout << "Nhap ma so sinh vien ban can sua: ";cin >> soct;
 	for(int i = 0; i < n; i++)
 	{
 		if(a[i].id == soct)
 		{
+		   res ++;
+		   for(int j = i; j < n;j++)
+		   {
 			a[i].input();
+		   }
 			cout << "Da sua sinh vien co ma " << soct << " thanh cong !\n";
 		}
 	}
+	if (res == 0)
+	cout << "\n * Ma so sinh vien khong ton tai ! * \n\n";
+	else n--;
 }
 
 
@@ -242,7 +257,7 @@ int main() {
 				break;
 			case 8:
                 updateStudent(a, n);  
-                listStudent(a, n); 
+                listStudent(a, n);
 				break;
 			case 0:
 			    cout << "Thoat!!!\n";
